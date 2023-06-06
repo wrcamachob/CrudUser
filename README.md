@@ -8,5 +8,5 @@ We have store procedures and database is in SQL 2019. Store procedure Create, De
 This Backend is .Net Core, we can change connection string in file appsettings.json
 # FrontEnd
 This frontend is Angular. After download just run this command
-npm install
-npm i sweetalert
+  --npm install
+  --npm i sweetalert
