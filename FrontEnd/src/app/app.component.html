@@ -1,0 +1,111 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">
+    Angular CRUD User
+  </a>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <!-- <ul class="list-group">
+        <li *ngFor="let user of usersList" 
+             class="list-group-item list-group-item-action"
+             (click)="openForEdit(user)"
+             [class.active]="user == selectedUser">
+          <span class="badge badge-primary">{{ user.id }}</span>{{ user.name }}-{{user.lastname}}
+        </li>
+      </ul> -->
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-tittle">
+            INSERT A NEW USER
+          </div>
+            <div class="form-group">
+              <div>
+                Identifier:
+              </div>
+              <input type="text" [(ngModel)]="idIdentifier" placeholder="Insert ID" class="form-control" id="identifier"
+                [disabled]="disableTextbox" (keypress)="keyPressNumbers($event)" minlength="5" maxlength="12"
+                pattern="[0-9]" appOnlynumber>
+            </div>
+            <div class="form-group">
+              <div>
+                Name:
+              </div>
+              <input type="text" [(ngModel)]="name" placeholder="Insert Name" class="form-control" maxlength="50"
+                required>
+            </div>
+            <div class="form-group">
+              <div>
+                Last Name:
+              </div>
+              <input type="text" [(ngModel)]="lastName" placeholder="Insert Last Name" class="form-control"
+                maxlength="50">
+            </div>
+            <div class="form-group">
+              <div>
+                Email:
+              </div>
+              <input type="email" [(ngModel)]="email" placeholder="Insert Email" class="form-control"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" required>
+            </div>
+            <div class="form-group">
+              <div>
+                Phone Number:
+              </div>
+              <input type="number" [(ngModel)]="phoneNumber" placeholder="Insert Phone Numer" class="form-control"
+                required>
+            </div>
+            <div class="form-group">
+              <div>
+                Date of Birth:
+              </div>
+              <input type="date" [(ngModel)]="dateBirth" placeholder="Insert Date" class="form-control" [max]="today">
+            </div>
+            <br>
+            <button (click)="Save()" class="btn btn-primary">
+              Submit
+            </button>
+            <button *ngIf="selectedUser.idIdentifier != 0" class="btn btn-danger" (click)="delete()">
+              Delete
+            </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+
+      <!-- <img
+            width="40"
+            alt="Angular Logo"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+          /> -->
+    </div>
+    <div class="col-md-4">
+      <br>
+      <table class="table table-bordered table-striped table-hover">
+        <thead class="bg-light">
+          <tr>
+            <th scope="col">Id Identifier</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col" data-formatter="formatDate">Date Of Birthday</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usersList">
+            <td>{{ user.idIdentifier }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.dateOfBirthday | date: 'dd/MM/yyyy' }}</td>
+            <td><button type="button" class="btn btn-primary" (click)="openForEdit(user)"><i class="fas fa-edit"></i>
+                Edit </button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
